@@ -36,21 +36,21 @@
 			<h:form styleClass="form-inline">
 			<div id="actions" class="search">
 				<div class="col-md-12">
-					<h:outputLabel for="searchName" value="Nome:"/>
-					<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.id}">
+					<h:outputLabel for="idLancamento" value="Nome:"/>
+					<h:inputText id="idLancamento" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.idLancamento}">
 						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
 					</h:inputText>
 					<h:commandButton styleClass="btn btn-primary" value="Search" action="#{lancamentoManagedBean.searchByIdAction}"/>
 					<h:commandLink styleClass="btn btn-primary" value="New Customer" action="newLancamento?faces-redirect=true"/>
 				</div>
 			</div>
-			<p:panel id="customerTable">
+			<p:panel id="tblancamento">
 				<h:dataTable styleClass="table table-striped" var="c" value="#{lancamentoManagedBean.listLancamento}">
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Id"/>
 						</f:facet>
-						<h:outputText value="#{c.id}"/>		    	
+						<h:outputText value="#{c.idLancamento}"/>		    	
 					</h:column>    
 					<h:column>
 						<f:facet name="header">

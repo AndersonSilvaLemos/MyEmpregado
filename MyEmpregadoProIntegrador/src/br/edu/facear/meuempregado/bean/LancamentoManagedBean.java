@@ -5,14 +5,14 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import br.edu.facear.meuempregado.service.LancamentoService;
 import br.edu.facear.meuempregador.model.Lancamento;
 
 
-	@ManagedBean(value = "lancamentoManagedBean")
+	@ManagedBean(name = "lancamentoManagedBean")
 	@SessionScoped
 	public class LancamentoManagedBean implements Serializable{
 		private static final long serialVersionUID = -9004785433894347006L;

@@ -47,8 +47,9 @@ public class LancamentoService {
 			Lancamento l = dao.lancamentoPorId(id);
 			return l;
 		}
-
 		
+
+		/*
 		public List<Lancamento> lancamentoPorId(int idLancamento) throws ClassNotFoundException, SQLException, IOException {
 			//TO-DO
 			List<Lancamento> list = new ArrayList<Lancamento>();
@@ -62,6 +63,6 @@ public class LancamentoService {
 			
 			return list;
 		}
-	
+	*/
 
 }
