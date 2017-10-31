@@ -1,5 +1,7 @@
 package br.edu.facear.meuempregado.service;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,31 @@ public class LancamentoService {
 			
 		}
 	
+		public void updateLancamento(Lancamento lancamento) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		public Lancamento LancamentoPorId(Integer id) throws SQLException, ClassNotFoundException, IOException {
+			LancamentoDao dao = new LancamentoDao();
+			Lancamento l = dao.lancamentoPorId(id);
+			return l;
+		}
+
+		
+		public List<Lancamento> lancamentoPorId(int idLancamento) throws ClassNotFoundException, SQLException, IOException {
+			//TO-DO
+			List<Lancamento> list = new ArrayList<Lancamento>();
+			
+			if(idLancamento != 0) {
+				list = (List<Lancamento>) dao.lancamentoPorId(idLancamento);
+			}
+			else {
+				list = dao.listarTodos();
+			}	
+			
+			return list;
+		}
 	
 
 }

@@ -1,11 +1,115 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
 
-</body>
+	<h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	   <title>Lancamentos e Despesas</title>
+	   <meta name="description" content=""/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	   <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	   <style>
+	        body {
+	            padding-top: 50px;
+	            padding-bottom: 20px;
+	        }
+	   </style>
+	   <link rel="stylesheet" href="css/style.css"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>     
+    </h:head>
+	<h:body>
+		<ui:include src="/inc/header.xhtml"/>
+			
+		<!-- Conteúdo principal da página -->
+		<main class="container">
+		<h1>Receitas e Despesas</h1>
+		<hr/>
+		<f:view>
+			<h:form styleClass="form-inline">
+			<div id="actions" class="search">
+				<div class="col-md-12">
+					<h:outputLabel for="searchName" value="Nome:"/>
+					<h:inputText id="searchName" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.id}">
+						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
+					</h:inputText>
+					<h:commandButton styleClass="btn btn-primary" value="Search" action="#{lancamentoManagedBean.searchByIdAction}"/>
+					<h:commandLink styleClass="btn btn-primary" value="New Customer" action="newLancamento?faces-redirect=true"/>
+				</div>
+			</div>
+			<p:panel id="customerTable">
+				<h:dataTable styleClass="table table-striped" var="c" value="#{lancamentoManagedBean.listLancamento}">
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Id"/>
+						</f:facet>
+						<h:outputText value="#{c.id}"/>		    	
+					</h:column>    
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Data"/>
+						</f:facet>
+				    	<h:outputText value="#{c.data}"/>
+					</h:column>    
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Documento"/>
+						</f:facet>
+				    	<h:outputText value="#{c.documento}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Tipo"/>
+						</f:facet>
+				    	<h:outputText value="#{c.tipoLancamento.descricao}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Atividade"/>
+						</f:facet>
+				    	<h:outputText value="#{c.atividade.descricao}"/>
+					</h:column>
+					<h:column>
+						<h:commandLink styleClass="btn btn-sm btn-success" value="View" action="showCustomer?faces-redirect=true">
+							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
+						</h:commandLink>
+						<h:commandLink styleClass="btn btn-sm btn-danger" value="Delete">
+							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
+							<f:ajax render="@all"/>
+							<f:passThroughAttribute name="data-toggle" value="modal" />
+                            <f:passThroughAttribute name="data-target" value="#delete-modal" />
+						</h:commandLink>
+					</h:column>       
+				</h:dataTable>
+				</p:panel>
+				<!-- Modal de Delete-->
+				<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true"></span></button>
+				        <h1 class="modal-title" id="modalLabel">Excluir Item</h1>
+				      </div>
+				      <div class="modal-body">
+				        Deseja realmente excluir este item?
+				      </div>
+				      <div class="modal-footer">
+				        <h:commandLink styleClass="btn btn-primary" value="Delete" action="#{customerManagedBean.deleteCustomerAction}"/>
+						<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
+				      </div>
+				    </div>
+				  </div>
+				</div> <!-- /.modal -->
+			</h:form>
+		</f:view>
+		</main>
+		<ui:include src="/inc/footer.xhtml"/>		
+	</h:body>
 </html>

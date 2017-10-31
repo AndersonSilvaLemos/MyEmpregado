@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.facear.meuempregado.service.LancamentoService;
 import br.edu.facear.meuempregador.model.Lancamento;
 
 public class LancamentoDao extends GenericDao{
@@ -14,7 +15,8 @@ public class LancamentoDao extends GenericDao{
 	private PreparedStatement ps;
 	private String SQL_INSERT = "INSERT INTO tblancamento(documento, data, valor, idTipo, idAtividade) VALUES (?, ?, ?, ?, ?);";
 	private String SQL_SELECT = "SELECT * FROM tblancamento";
-	//private String PROCURAR_NOME = "SELECT cs.id, cs.name, cs.email, ct.id, ct.description FROM tbcustomer cs, tbcategory ct WHERE cs.name LIKE ? AND cs.idCategory = ct.id;";
+	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE ID=?;";
+	
 	
 	
 	public void insertLancamento(Lancamento l){
@@ -82,7 +84,25 @@ public class LancamentoDao extends GenericDao{
 		// Se por acado não houve retorno do banco de dados, retorna
 		return lista;
 	}
-
 	
-	
+	public Lancamento lancamentoPorId(int idLancamento) throws SQLException, ClassNotFoundException, IOException {
+		Lancamento l = null;
+		LancamentoService service = new LancamentoService();
+		List<Lancamento> listaLancamento = service.listAll();
+		
+		openConnection();
+		
+		ps=connect.prepareStatement(SQL_SELECT_ID);
+		ps.setInt(1, idLancamento);
+		
+		for(int i=0; i<listaLancamento.size(); i++) {
+			if(idLancamento == listaLancamento.get(i).getIdLancamento()) {
+				l = listaLancamento.get(i);
+			}
+		}
+		
+		closeConnection();
+		
+		return l;
+	}
 }

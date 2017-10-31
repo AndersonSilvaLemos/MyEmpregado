@@ -6,13 +6,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.edu.facear.meuempregado.service.LancamentoService;
 import br.edu.facear.meuempregador.model.Lancamento;
 
 
-	//@ManagedBean(name = "lancamentoManagedBean")
-	//@SessionScoped
+	@ManagedBean(value = "lancamentoManagedBean")
+	@SessionScoped
 	public class LancamentoManagedBean implements Serializable{
 		private static final long serialVersionUID = -9004785433894347006L;
 		
@@ -27,10 +28,12 @@ import br.edu.facear.meuempregador.model.Lancamento;
 			listLancamento = service.listAll();
 
 		}
-	/*	public void searchByNameAction() throws ClassNotFoundException, SQLException, IOException{
+		
+		public void searchByIdAction() throws ClassNotFoundException, SQLException, IOException{
 			System.out.println("Searching...");
-			//this.listLancamento = service.findCustomerByName(lancamento.getDocumento());
-		}*/
+			this.listLancamento = (List<Lancamento>) service.LancamentoPorId(lancamento.getIdLancamento());
+		}
+		
 		public String insertLancamentoAction(){
 			System.out.println("Saving...");
 			service.insertLancamento(lancamento);
