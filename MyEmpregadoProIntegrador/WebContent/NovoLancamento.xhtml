@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	   <title>JSF - Customer List</title>
+	   <meta name="description" content=""/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	   <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	   <style>
+	        body {
+	            padding-top: 50px;
+	            padding-bottom: 20px;
+	        }
+	   </style>
+	   <link rel="stylesheet" href="css/style.css"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>     
+    </h:head>
+	<h:body>
+		<ui:include src="/inc/header.xhtml"/>
+	
+		<!-- ConteÃºdo principal da pÃ¡gina -->
+		<main class="container">
+		<h1>Novo Lançamento</h1>
+		<hr/>
+			<f:view>
+				<h:form>
+				<div>
+					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.tipoLancamento.idTipo}">
+						<f:selectItem itemValue="0" itemLabel="Select One"/>
+						<f:selectItem itemValue="1" itemLabel="Receita"/>
+						<f:selectItem itemValue="2" itemLabel="Despesa"/>			
+					</h:selectOneMenu>  
+				</div>
+				<br/>
+				<div>
+					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.atividade.idAtividade}">
+						<f:selectItem itemValue="0" itemLabel="Select One"/>
+						<f:selectItem itemValue="1" itemLabel="Venda"/>
+						<f:selectItem itemValue="2" itemLabel="Serviço"/>			
+					</h:selectOneMenu>  
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="idLancamento" value="Id:"/>
+					<h:inputText id="idLancamento" styleClass="form-control" value="#{lancamentoManagedBean.lancamento.idLancamento}"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Data:"/>
+					<h:inputText styleClass="form-control" value="#{lancamentoManagedBean.lancamento.data}"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Documento:"/>
+					<h:inputText styleClass="form-control" value="#{lancamentoManagedBean.lancamento.documento}"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Valor:"/>
+					<h:inputText styleClass="form-control" value="#{lancamentoManagedBean.lancamento.valor}"/>
+				</div>
+				<br/>
+				<div id="actions" class="row">
+					<div class="col-md-12">
+					<h:commandLink styleClass="btn btn-primary" value="Save" action="#{lancamentoManagedBean.insertLancamentoAction}"/>
+					<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
+					</div>
+				</div>
+				</h:form>			
+			</f:view>
+		</main>
+		<ui:include src="/inc/footer.xhtml"/>
+	</h:body>
+</html>

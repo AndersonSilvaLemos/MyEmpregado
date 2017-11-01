@@ -8,8 +8,12 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+
+
 import br.edu.facear.meuempregado.service.LancamentoService;
+import br.edu.facear.meuempregador.model.Atividade;
 import br.edu.facear.meuempregador.model.Lancamento;
+import br.edu.facear.meuempregador.model.TipoLancamento;
 
 
 	@ManagedBean(name = "lancamentoManagedBean")
@@ -24,7 +28,7 @@ import br.edu.facear.meuempregador.model.Lancamento;
 		
 		public LancamentoManagedBean(){
 			service = new LancamentoService();
-			lancamento = new Lancamento(0, "", "", 0 , null, null);
+			lancamento = new Lancamento(0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, ""));
 			listLancamento = service.listAll();
 
 		}

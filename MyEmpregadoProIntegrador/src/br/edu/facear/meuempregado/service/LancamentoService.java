@@ -24,21 +24,13 @@ public class LancamentoService {
 		
 		public void insertLancamento(Lancamento c){
 			if(c != null)
-				
-				
-				
+
 				dao.insertLancamento(c);
 		}
-		
 
-
-		public void updateCustomer(Lancamento lancamento) {
-			// TODO Auto-generated method stub
-			
-		}
-	
 		public void updateLancamento(Lancamento lancamento) {
 			// TODO Auto-generated method stub
+			
 			
 		}
 		

@@ -13,7 +13,7 @@ import br.edu.facear.meuempregador.model.Lancamento;
 public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
-	private String SQL_INSERT = "INSERT INTO tblancamento(documento, data, valor, idTipo, idAtividade) VALUES (?, ?, ?, ?, ?);";
+	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor, ) VALUES (?, ?, ?, ?, ?);";
 	private String SQL_SELECT = "SELECT * FROM tblancamento";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE ID=?;";
 	
@@ -26,12 +26,12 @@ public class LancamentoDao extends GenericDao{
 			
 			// Preparar o comando SQL a ser enviado ao BD
 			ps = connect.prepareStatement(SQL_INSERT);
-			ps.setString(1, l.getDocumento());
-			ps.setString(2, l.getData());
-			ps.setFloat(3, l.getValor());
-						
-			//ps.setObject(3, c.getCategory().getIdCategory());
-
+			ps.setObject(1, l.getTipoLancamento().getIdTipo());
+			ps.setObject(2, l.getAtividade().getIdAtividade());
+			ps.setString(3, l.getDocumento());
+			ps.setString(4, l.getData());
+			ps.setFloat(5, l.getValor());
+			
 			// Executar o comando de INSERT, logo não se espera retorno
 			ps.executeUpdate();
 			
