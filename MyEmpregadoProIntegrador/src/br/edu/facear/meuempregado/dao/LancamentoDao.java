@@ -16,7 +16,7 @@ import br.edu.facear.meuempregador.model.TipoLancamento;
 public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
-	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor, ) VALUES (?, ?, ?, ?, ?);";
+	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor) VALUES (?, ?, ?, ?, ?)";
 	private String SQL_SELECT = "SELECT * FROM tblancamento tl INNER JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade INNER JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo ;";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE ID=?;";
 	

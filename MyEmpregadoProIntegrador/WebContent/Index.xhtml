@@ -36,22 +36,18 @@
 			<h:form styleClass="form-inline">
 			<div id="actions" class="search">
 				<div class="col-md-12">
+					<br/>
 					<h:outputLabel for="idLancamento" value="Pesquisar:"/>
 					<h:inputText id="idLancamento" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.idLancamento}">
 						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
 					</h:inputText>
 					<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{lancamentoManagedBean.searchByIdAction}"/>
-					<h:commandLink styleClass="btn btn-primary" value="Novo Lancamento" action="NovoLancamento?faces-redirect=true"/>
+					<br/>
+					
 				</div>
 			</div>
 			<p:panel id="tblancamento">
 				<h:dataTable styleClass="table table-striped" var="c" value="#{lancamentoManagedBean.listLancamento}">
-					<h:column>
-						<f:facet name="header">
-							<h:outputLabel value="Id"/>
-						</f:facet>
-						<h:outputText value="#{c.idLancamento}"/>		    	
-					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputLabel value="Tipo"/>
@@ -95,6 +91,8 @@
 					</h:column>       
 				</h:dataTable>
 				</p:panel>
+				<br/> <!-- Botão Novo Lançamento -->
+				<h:commandLink styleClass="btn btn-primary" value="Novo Lancamento" action="NovoLancamento?faces-redirect=true"/>
 				<!-- Modal de Delete-->
 				<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
 				  <div class="modal-dialog" role="document">

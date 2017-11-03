@@ -32,8 +32,9 @@
 		<h1>Novo Lançamento</h1>
 		<hr/>
 			<f:view>
-				<h:form>
+				<h:form >
 				<div>
+					<h:outputLabel value="Tipo:"/>
 					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.tipoLancamento.idTipo}">
 						<f:selectItem itemValue="0" itemLabel="Select One"/>
 						<f:selectItem itemValue="1" itemLabel="Receita"/>
@@ -42,16 +43,14 @@
 				</div>
 				<br/>
 				<div>
+					<h:outputLabel value="Atividade:"/>
 					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.atividade.idAtividade}">
 						<f:selectItem itemValue="0" itemLabel="Select One"/>
 						<f:selectItem itemValue="1" itemLabel="Venda"/>
 						<f:selectItem itemValue="2" itemLabel="Serviço"/>			
 					</h:selectOneMenu>  
 				</div>
-				<div class="form-group">
-					<h:outputLabel for="idLancamento" value="Id:"/>
-					<h:inputText id="idLancamento" styleClass="form-control" value="#{lancamentoManagedBean.lancamento.idLancamento}"/>
-				</div>
+				<br/>
 				<div class="form-group">
 					<h:outputLabel value="Data:"/>
 					<h:inputText styleClass="form-control" value="#{lancamentoManagedBean.lancamento.data}"/>
@@ -68,7 +67,7 @@
 				<div id="actions" class="row">
 					<div class="col-md-12">
 					<h:commandLink styleClass="btn btn-primary" value="Save" action="#{lancamentoManagedBean.insertLancamentoAction}"/>
-					<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
+					<h:commandLink styleClass="btn btn-default" value="Cancel" action="Index?faces-redirect=true"/>
 					</div>
 				</div>
 				</h:form>			

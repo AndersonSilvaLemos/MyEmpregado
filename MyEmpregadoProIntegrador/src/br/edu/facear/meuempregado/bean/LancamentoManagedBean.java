@@ -41,8 +41,8 @@ import br.edu.facear.meuempregador.model.TipoLancamento;
 			service.insertLancamento(lancamento);
 			
 			listLancamento = service.listAll();
-		
-			return "index";
+			
+			return "Index";
 		}
 		public String updateLancamentoAction(){
 			System.out.println("Updating...");
