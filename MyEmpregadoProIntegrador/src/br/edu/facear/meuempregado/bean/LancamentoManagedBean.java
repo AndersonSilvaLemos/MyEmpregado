@@ -8,8 +8,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-
-
 import br.edu.facear.meuempregado.service.LancamentoService;
 import br.edu.facear.meuempregador.model.Atividade;
 import br.edu.facear.meuempregador.model.Lancamento;
@@ -46,12 +44,14 @@ import br.edu.facear.meuempregador.model.TipoLancamento;
 		
 			return "index";
 		}
-		/*public String updateLancamentoAction(){
+		public String updateLancamentoAction(){
 			System.out.println("Updating...");
 			service.updateLancamento(lancamento);
 			
 			return "index";
-		}*/
+		}
+		
+		//get set
 		public Lancamento getLancamento() {
 			return lancamento;
 		}

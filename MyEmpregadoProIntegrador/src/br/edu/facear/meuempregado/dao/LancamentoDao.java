@@ -7,14 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import br.edu.facear.meuempregado.service.LancamentoService;
+import br.edu.facear.meuempregador.model.Atividade;
 import br.edu.facear.meuempregador.model.Lancamento;
+import br.edu.facear.meuempregador.model.TipoLancamento;
 
 public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
 	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor, ) VALUES (?, ?, ?, ?, ?);";
-	private String SQL_SELECT = "SELECT * FROM tblancamento";
+	private String SQL_SELECT = "SELECT * FROM tblancamento tl INNER JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade INNER JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo ;";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE ID=?;";
 	
 	
@@ -65,7 +68,8 @@ public class LancamentoDao extends GenericDao{
 				while(rs.next()){
 					// Para cada registro do ResultSet, instanciar um objeto Customer
 					Lancamento c = new Lancamento(rs.getInt("idLancamento"), rs.getString("documento"),
-							rs.getString("data"), rs.getFloat("valor"), null, null);
+							rs.getString("data"), rs.getFloat("valor"), new TipoLancamento(rs.getInt("idTipo"), rs.getString("descricao")),
+							new Atividade(rs.getInt("idAtividade"), rs.getString("descricao")));
 					
 					// Adicionar na lista de Clientes
 					lista.add(c);

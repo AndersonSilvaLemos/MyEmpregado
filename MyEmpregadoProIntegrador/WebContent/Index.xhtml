@@ -40,8 +40,8 @@
 					<h:inputText id="idLancamento" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.idLancamento}">
 						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
 					</h:inputText>
-					<h:commandButton styleClass="btn btn-primary" value="Search" action="#{lancamentoManagedBean.searchByIdAction}"/>
-					<h:commandLink styleClass="btn btn-primary" value="New Customer" action="newLancamento?faces-redirect=true"/>
+					<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{lancamentoManagedBean.searchByIdAction}"/>
+					<h:commandLink styleClass="btn btn-primary" value="Novo Lancamento" action="NovoLancamento?faces-redirect=true"/>
 				</div>
 			</div>
 			<p:panel id="tblancamento">
@@ -51,6 +51,12 @@
 							<h:outputLabel value="Id"/>
 						</f:facet>
 						<h:outputText value="#{c.idLancamento}"/>		    	
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputLabel value="Tipo"/>
+						</f:facet>
+				    	<h:outputText value="#{c.tipoLancamento.descricao}"/>
 					</h:column>    
 					<h:column>
 						<f:facet name="header">
@@ -64,11 +70,11 @@
 						</f:facet>
 				    	<h:outputText value="#{c.documento}"/>
 					</h:column>
-					<h:column>
+							<h:column>
 						<f:facet name="header">
-							<h:outputLabel value="Tipo"/>
+							<h:outputLabel value="Valor"/>
 						</f:facet>
-				    	<h:outputText value="#{c.tipoLancamento.descricao}"/>
+				    	<h:outputText value="#{c.valor}"/>
 					</h:column>
 					<h:column>
 						<f:facet name="header">
