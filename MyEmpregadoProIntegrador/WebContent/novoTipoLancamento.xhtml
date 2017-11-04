@@ -29,9 +29,25 @@
 		<ui:include src="/inc/header.xhtml"/>
 			
 		<!-- Conteúdo principal da página -->
-		
-		
-		
+		<main class="container">
+		<h1>Novo Tipo de Lançamento</h1>
+		<hr/>
+			<f:view>
+				<h:form >
+				<div class="form-group">
+					<h:outputLabel value="Descrição:"/>
+					<h:inputText styleClass="form-control" value="#{tipoLancamentoManagedBean.tipoLancamento.descricao}"/>
+				</div>
+				<br/>
+				<div id="actions" class="row">
+					<div class="col-md-12">
+					<h:commandLink styleClass="btn btn-primary" value="Save" action="#{tipoLancamentoManagedBean.insertTipoLancamentoAction}"/>
+					<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
+					</div>
+				</div>
+				</h:form>			
+			</f:view>
+		</main>
 		<ui:include src="/inc/footer.xhtml"/>		
 	</h:body>
 </html>
