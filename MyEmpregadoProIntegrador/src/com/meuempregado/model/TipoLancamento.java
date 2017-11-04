@@ -1,4 +1,4 @@
-package br.edu.facear.meuempregador.model;
+package com.meuempregado.model;
 
 public class TipoLancamento {
 	

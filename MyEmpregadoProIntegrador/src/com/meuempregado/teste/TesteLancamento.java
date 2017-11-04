@@ -1,9 +1,9 @@
-package br.edu.facear.meuempregado.teste;
+package com.meuempregado.teste;
 
 import java.util.List;
 
-import br.edu.facear.meuempregado.service.LancamentoService;
-import br.edu.facear.meuempregador.model.Lancamento;
+import com.meuempregado.model.Lancamento;
+import com.meuempregado.service.LancamentoService;
 
 public class TesteLancamento {
 

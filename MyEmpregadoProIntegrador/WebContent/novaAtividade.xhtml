@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	   <title>JSF - Customer List</title>
+	   <meta name="description" content=""/>
+	   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	   <link rel="stylesheet" href="css/bootstrap.min.css"/>
+	   <style>
+	        body {
+	            padding-top: 50px;
+	            padding-bottom: 20px;
+	        }
+	   </style>
+	   <link rel="stylesheet" href="css/style.css"/>
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css"/>     
+    </h:head>
+	<h:body>
+		<ui:include src="/inc/header.xhtml"/>
+	
+		<!-- ConteÃºdo principal da pÃ¡gina -->
+		<main class="container">
+		<h1>Nova Atividade</h1>
+		<hr/>
+			<f:view>
+				<h:form >
+				<div class="form-group">
+					<h:outputLabel value="Descrição:"/>
+					<h:inputText styleClass="form-control" value="#{atividadeManagedBean.atividade.descricao}"/>
+				</div>
+				<br/>
+				<div id="actions" class="row">
+					<div class="col-md-12">
+					<h:commandLink styleClass="btn btn-primary" value="Save" action="#{atividadeManagedBean.insertAtividadeAction}"/>
+					<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
+					</div>
+				</div>
+				</h:form>			
+			</f:view>
+		</main>
+		<ui:include src="/inc/footer.xhtml"/>
+	</h:body>
+</html>

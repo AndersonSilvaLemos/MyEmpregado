@@ -1,4 +1,4 @@
-package br.edu.facear.meuempregado.dao;
+package com.meuempregado.dao;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -7,11 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import br.edu.facear.meuempregado.service.LancamentoService;
-import br.edu.facear.meuempregador.model.Atividade;
-import br.edu.facear.meuempregador.model.Lancamento;
-import br.edu.facear.meuempregador.model.TipoLancamento;
+import com.meuempregado.model.Atividade;
+import com.meuempregado.model.Lancamento;
+import com.meuempregado.model.TipoLancamento;
+import com.meuempregado.service.LancamentoService;
 
 public class LancamentoDao extends GenericDao{
 

@@ -1,4 +1,4 @@
-package br.edu.facear.meuempregado.db;
+package com.meuempregado.db;
 
 import java.io.IOException;
 import java.sql.Connection;

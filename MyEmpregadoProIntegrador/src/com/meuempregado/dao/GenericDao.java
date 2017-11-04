@@ -1,9 +1,10 @@
-package br.edu.facear.meuempregado.dao;
+package com.meuempregado.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import br.edu.facear.meuempregado.db.ConnectDB;
+
+import com.meuempregado.db.ConnectDB;
 
 public class GenericDao {
 	

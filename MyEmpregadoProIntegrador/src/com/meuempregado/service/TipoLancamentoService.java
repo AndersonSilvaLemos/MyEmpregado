@@ -1,4 +1,4 @@
-package br.edu.facear.meuempregado.service;
+package com.meuempregado.service;
 
 public class TipoLancamentoService {
 

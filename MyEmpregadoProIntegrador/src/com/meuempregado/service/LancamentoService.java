@@ -1,12 +1,12 @@
-package br.edu.facear.meuempregado.service;
+package com.meuempregado.service;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.facear.meuempregado.dao.LancamentoDao;
-import br.edu.facear.meuempregador.model.Lancamento;
+import com.meuempregado.dao.LancamentoDao;
+import com.meuempregado.model.Lancamento;
 
 
 public class LancamentoService {

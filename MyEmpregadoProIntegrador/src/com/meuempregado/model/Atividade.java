@@ -1,4 +1,4 @@
-package br.edu.facear.meuempregador.model;
+package com.meuempregado.model;
 
 public class Atividade {
 	private int idAtividade;
@@ -24,7 +24,10 @@ public class Atividade {
 		this.idAtividade = idAtividade;
 		this.descricao = descricao;
 	}
-	
+	@Override
+	public String toString() {
+		return "Atividade[idAtividade =" + idAtividade + ", descricao=" + descricao + "]";
+	}
 	
 
 }
