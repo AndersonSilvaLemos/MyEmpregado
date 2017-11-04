@@ -11,9 +11,9 @@ import com.meuempregado.model.TipoLancamento;
 public class TipoLancamentoService {
 	
 	private TipoLancamentoDao dao = new TipoLancamentoDao(); 
+	
 	public List<TipoLancamento> listAll(){
 		
-		dao = new TipoLancamentoDao();
 		return dao.listarTodos();
 	}
 	

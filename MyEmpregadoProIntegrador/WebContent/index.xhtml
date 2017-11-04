@@ -37,7 +37,7 @@
 			<div id="actions" class="search">
 				<div class="col-md-12">
 					<br/>
-					<h:outputLabel for="idLancamento" value="Pesquisar:"/>
+					<!--<h:outputLabel for="idLancamento" value="Pesquisar:"/> -->
 					<h:inputText id="idLancamento" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.idLancamento}">
 						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
 					</h:inputText>
@@ -79,10 +79,10 @@
 				    	<h:outputText value="#{c.atividade.descricao}"/>
 					</h:column>
 					<h:column>
-						<h:commandLink styleClass="btn btn-sm btn-success" value="View" action="showCustomer?faces-redirect=true">
+						<h:commandLink styleClass="btn btn-sm btn-success" value="Editar" action="editarLancamento?faces-redirect=true">
 							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
 						</h:commandLink>
-						<h:commandLink styleClass="btn btn-sm btn-danger" value="Delete">
+						<h:commandLink styleClass="btn btn-sm btn-danger" value="Excluir">
 							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
 							<f:ajax render="@all"/>
 							<f:passThroughAttribute name="data-toggle" value="modal" />
