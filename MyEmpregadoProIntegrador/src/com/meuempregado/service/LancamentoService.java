@@ -14,24 +14,24 @@ public class LancamentoService {
 
 		private LancamentoDao dao = new LancamentoDao(); 
 		public List<Lancamento> listAll(){
-			dao = new LancamentoDao();
 			
-			//List<Lancamento> list = new ArrayList<Lancamento>();
-			//list.add(new Lancamento(1, "2005", "24/10/2017", 205.0f, null, null));
-	
+			dao = new LancamentoDao();
 			return dao.listarTodos();
 		}
 		
 		public void insertLancamento(Lancamento c){
+			
 			if(c != null)
-
 				dao.insertLancamento(c);
 		}
 
-		public void updateLancamento(Lancamento lancamento) {
+		public void updateLancamento(Lancamento l) {
 			// TODO Auto-generated method stub
 			
-			
+		}
+		
+		public void deleteLancamento(Lancamento l ) throws ClassNotFoundException, SQLException, IOException {
+			dao.deleteLancamento(l);
 		}
 		
 		public Lancamento LancamentoPorId(Integer id) throws SQLException, ClassNotFoundException, IOException {

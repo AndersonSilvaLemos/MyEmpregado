@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import com.meuempregado.model.Atividade;
 import com.meuempregado.model.Lancamento;
 import com.meuempregado.model.TipoLancamento;
+import com.meuempregado.service.AtividadeService;
 import com.meuempregado.service.LancamentoService;
 
 
@@ -21,7 +22,11 @@ import com.meuempregado.service.LancamentoService;
 		
 		private Lancamento lancamento;
 		private List<Lancamento> listLancamento;
+		
 		private LancamentoService service;
+		private AtividadeService serviceAtividade;
+		
+		private List<Atividade> listAtividade;
 				
 		//get set
 		public Lancamento getLancamento() {
@@ -47,7 +52,17 @@ import com.meuempregado.service.LancamentoService;
 			service = new LancamentoService();
 			lancamento = new Lancamento(0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, ""));
 			listLancamento = service.listAll();
+			
+			serviceAtividade = new AtividadeService();
+			listAtividade = serviceAtividade.listAll();
 
+		}
+		
+		public List<Atividade> getListAtividade() {
+			return listAtividade;
+		}
+		public void setListAtividade(List<Atividade> listAtividade) {
+			this.listAtividade = listAtividade;
 		}
 		
 		public void searchByIdAction() throws ClassNotFoundException, SQLException, IOException{
@@ -67,6 +82,14 @@ import com.meuempregado.service.LancamentoService;
 			System.out.println("Updating...");
 			service.updateLancamento(lancamento);
 			
+			return "index";
+		}
+		
+		public String deleteLancamentoAction() throws ClassNotFoundException, SQLException, IOException {
+			System.out.println("Deleting...");
+			service.deleteLancamento(lancamento);
+			
+			listLancamento = service.listAll();
 			return "index";
 		}
 

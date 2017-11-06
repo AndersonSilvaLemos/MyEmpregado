@@ -17,8 +17,8 @@ public class LancamentoDao extends GenericDao{
 	private PreparedStatement ps;
 	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor) VALUES (?, ?, ?, ?, ?)";
 	private String SQL_SELECT = "SELECT * FROM tblancamento tl INNER JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade INNER JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo ;";
-	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE ID=?;";
-	
+	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE IDLANCAMENTO=?;";
+	private String SQL_DELETE = "DELETE FROM  tblancamento WHERE IDLANCAMENTO=?;";
 	
 	
 	public void insertLancamento(Lancamento l){
@@ -107,5 +107,19 @@ public class LancamentoDao extends GenericDao{
 		closeConnection();
 		
 		return l;
+	}
+	
+	public void deleteLancamento(Lancamento l) throws SQLException, ClassNotFoundException, IOException {
+				
+		//Abrir conexão
+		openConnection();
+		
+		ps = connect.prepareStatement(SQL_DELETE);
+		ps.setInt(1, l.getIdLancamento());
+		
+		ps.execute();
+		
+		//Fechar conexão
+		closeConnection();
 	}
 }

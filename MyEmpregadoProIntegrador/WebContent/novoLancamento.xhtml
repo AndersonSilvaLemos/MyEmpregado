@@ -35,14 +35,15 @@
 				<h:form >
 				<div>
 					<h:outputLabel value="Tipo:"/>
-					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.tipoLancamento.idTipo}">
+					<h:selectOneMenu style="width:100%" styleClass="form-control" value="#{lancamentoManagedBean.lancamento.tipoLancamento.idTipo}">
 						<f:selectItem itemValue="0" itemLabel="Select One"/>
 						<f:selectItem itemValue="1" itemLabel="Receita"/>
-						<f:selectItem itemValue="2" itemLabel="Despesa"/>			
+						<f:selectItem itemValue="2" itemLabel="Despesa"/>	
+								
 					</h:selectOneMenu>  
 				
 				<!-- Botão Novo Tipo Lancamento -->
-				<h:commandLink styleClass="btn btn-primary" value="Novo Tipo" action="novoTipoLancamento?faces-redirect=true"/>
+				<!--<h:commandLink styleClass="btn btn-primary" value="Novo Tipo" action="novoTipoLancamento?faces-redirect=true"/> -->
 				</div>
 				<br/>
 				<div class="form-group">
@@ -57,14 +58,14 @@
 					<h:outputLabel value="Valor:"/>
 					<h:inputText styleClass="form-control" value="#{lancamentoManagedBean.lancamento.valor}"/>
 				</div>
-				<br/>
+				
 				<div>
 					<h:outputLabel value="Atividade:"/>
 					<h:selectOneMenu styleClass="form-control" value="#{lancamentoManagedBean.lancamento.atividade.idAtividade}">
 						<f:selectItem itemValue="0" itemLabel="Select One"/>
-						<f:selectItem itemValue="1" itemLabel="Venda"/>
-						<f:selectItem itemValue="2" itemLabel="Serviço"/>			
-					</h:selectOneMenu>  
+						<f:selectItems value="#{lancamentoManagedBean.listAtividade}" 
+										var = "atividade" itemValue="#{atividade.idAtividade}" itemLabel="#{atividade.descricao}"></f:selectItems>		
+					</h:selectOneMenu>
 				<!-- Botão Nova Atividade -->
 				<h:commandLink styleClass="btn btn-primary" value="Nova Atividade" action="novaAtividade?faces-redirect=true"/>
 				</div>

@@ -78,6 +78,7 @@
 						</f:facet>
 				    	<h:outputText value="#{c.atividade.descricao}"/>
 					</h:column>
+					<!-- Editar -->
 					<h:column>
 						<h:commandLink styleClass="btn btn-sm btn-success" value="Editar" action="editarLancamento?faces-redirect=true">
 							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
@@ -93,6 +94,7 @@
 				</p:panel>
 				<br/> <!-- Botão Novo Lançamento -->
 				<h:commandLink styleClass="btn btn-primary" value="Novo Lancamento" action="novoLancamento?faces-redirect=true"/>
+				
 				<!-- Modal de Delete-->
 				<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
 				  <div class="modal-dialog" role="document">
@@ -105,7 +107,7 @@
 				        Deseja realmente excluir este item?
 				      </div>
 				      <div class="modal-footer">
-				        <h:commandLink styleClass="btn btn-primary" value="Delete" action="#{customerManagedBean.deleteCustomerAction}"/>
+				        <h:commandLink styleClass="btn btn-primary" value="Delete" action="#{lancamentoManagedBean.deleteLancamentoAction}"/>
 						<h:commandLink styleClass="btn btn-default" value="Cancel" action="index?faces-redirect=true"/>
 				      </div>
 				    </div>
