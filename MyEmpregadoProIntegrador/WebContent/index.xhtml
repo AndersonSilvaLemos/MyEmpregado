@@ -83,11 +83,10 @@
 						<h:commandLink styleClass="btn btn-sm btn-success" value="Editar" action="editarLancamento?faces-redirect=true">
 							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
 						</h:commandLink>
-						<h:commandLink styleClass="btn btn-sm btn-danger" value="Excluir">
+						<!-- Excluir -->
+						<h:commandLink styleClass="btn btn-sm btn-danger" value="Excluir" action="excluirLancamento?faces-redirect=true">
 							<f:setPropertyActionListener target="#{lancamentoManagedBean.lancamento}" value="#{c}" />
-							<f:ajax render="@all"/>
-							<f:passThroughAttribute name="data-toggle" value="modal" />
-                            <f:passThroughAttribute name="data-target" value="#delete-modal" />
+							
 						</h:commandLink>
 					</h:column>       
 				</h:dataTable>

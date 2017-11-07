@@ -25,9 +25,9 @@ public class LancamentoService {
 				dao.insertLancamento(c);
 		}
 
-		public void updateLancamento(Lancamento l) {
+		public void updateLancamento(Lancamento l) throws ClassNotFoundException, SQLException, IOException {
 			// TODO Auto-generated method stub
-			
+			dao.updateLancamento(l);
 		}
 		
 		public void deleteLancamento(Lancamento l ) throws ClassNotFoundException, SQLException, IOException {

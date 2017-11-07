@@ -59,6 +59,7 @@ import com.meuempregado.service.LancamentoService;
 		}
 		
 		public List<Atividade> getListAtividade() {
+			listAtividade = serviceAtividade.listAll();
 			return listAtividade;
 		}
 		public void setListAtividade(List<Atividade> listAtividade) {
@@ -75,12 +76,16 @@ import com.meuempregado.service.LancamentoService;
 			service.insertLancamento(lancamento);
 			
 			listLancamento = service.listAll();
+			limpar();
 			
 			return "index";
 		}
-		public String updateLancamentoAction(){
+		public String updateLancamentoAction() throws ClassNotFoundException, SQLException, IOException{
 			System.out.println("Updating...");
 			service.updateLancamento(lancamento);
+			
+			listLancamento = service.listAll();
+			limpar();
 			
 			return "index";
 		}
@@ -90,7 +95,13 @@ import com.meuempregado.service.LancamentoService;
 			service.deleteLancamento(lancamento);
 			
 			listLancamento = service.listAll();
+			limpar();
+			
 			return "index";
+		}
+		
+		private void limpar() {
+			this.lancamento = new Lancamento(0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, "")); 
 		}
 
 }

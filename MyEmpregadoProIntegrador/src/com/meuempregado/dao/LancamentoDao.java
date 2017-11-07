@@ -15,10 +15,11 @@ import com.meuempregado.service.LancamentoService;
 public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
-	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, idAtividade, documento, data, valor) VALUES (?, ?, ?, ?, ?)";
-	private String SQL_SELECT = "SELECT * FROM tblancamento tl INNER JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade INNER JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo ;";
+	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, documento, data, valor, idAtividade) VALUES (?, ?, ?, ?, ?)";
+	private String SQL_SELECT = "SELECT tl.*, ta.*, tp.idTipo, tp.descricao as descricaoTipo FROM tblancamento tl JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo;";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE IDLANCAMENTO=?;";
 	private String SQL_DELETE = "DELETE FROM  tblancamento WHERE IDLANCAMENTO=?;";
+	private String SQL_UPDATE = "UPDATE tblancamento SET idTipo=?, documento=?, data=?, valor=?, idAtividade=? WHERE IDLANCAMENTO=?";
 	
 	
 	public void insertLancamento(Lancamento l){
@@ -45,8 +46,25 @@ public class LancamentoDao extends GenericDao{
 			System.out.println("File not Found");
 		} catch (SQLException e) {
 			System.out.println("Error on Connecting - Salvar");
-			
 		}
+	}
+	
+	public void updateLancamento(Lancamento l) throws SQLException, ClassNotFoundException, IOException {
+		
+		//Abrir conexão
+		openConnection();
+		
+		ps = connect.prepareStatement(SQL_UPDATE);
+		ps.setObject(1, l.getTipoLancamento().getIdTipo());
+		ps.setString(2, l.getDocumento());
+		ps.setString(3, l.getData());
+		ps.setFloat(4, l.getValor());
+		ps.setObject(5, l.getAtividade().getIdAtividade());
+		ps.setInt(6, l.getIdLancamento());
+		ps.execute();
+		
+		//Fechar conexão
+		closeConnection();
 	}
 	
 	public List<Lancamento> listarTodos(){
@@ -67,7 +85,7 @@ public class LancamentoDao extends GenericDao{
 				while(rs.next()){
 					// Para cada registro do ResultSet, instanciar um objeto Customer
 					Lancamento c = new Lancamento(rs.getInt("idLancamento"), rs.getString("documento"),
-							rs.getString("data"), rs.getFloat("valor"), new TipoLancamento(rs.getInt("idTipo"), rs.getString("descricao")),
+							rs.getString("data"), rs.getFloat("valor"), new TipoLancamento(rs.getInt("idTipo"), rs.getString("descricaoTipo")),
 							new Atividade(rs.getInt("idAtividade"), rs.getString("descricao")));
 					
 					// Adicionar na lista de Clientes
