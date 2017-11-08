@@ -50,7 +50,7 @@ import com.meuempregado.service.LancamentoService;
 		
 		public LancamentoManagedBean(){
 			service = new LancamentoService();
-			lancamento = new Lancamento(0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, ""));
+			lancamento = new Lancamento(1, 0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, ""));
 			listLancamento = service.listAll();
 			
 			serviceAtividade = new AtividadeService();
@@ -101,7 +101,7 @@ import com.meuempregado.service.LancamentoService;
 		}
 		
 		private void limpar() {
-			this.lancamento = new Lancamento(0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, "")); 
+			this.lancamento = new Lancamento(1, 0, "", "", 0 , new TipoLancamento(0, ""), new Atividade (0, "")); 
 		}
 
 }

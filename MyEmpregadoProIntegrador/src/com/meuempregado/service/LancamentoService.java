@@ -20,7 +20,7 @@ public class LancamentoService {
 		}
 		
 		public void insertLancamento(Lancamento c){
-			
+		
 			if(c != null)
 				dao.insertLancamento(c);
 		}

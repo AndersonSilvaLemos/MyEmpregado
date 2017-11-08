@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class Lancamento {
 	
+	private int idMei;
+	
 	private int idLancamento;
 	private String documento;
 	private String data;
@@ -12,6 +14,14 @@ public class Lancamento {
 	private Atividade atividade;
 	
 	
+	public int getIdMei() {
+		return idMei;
+	}
+
+	public void setIdMei(int idMei) {
+		this.idMei = idMei;
+	}
+
 	public int getIdLancamento() {
 		return idLancamento;
 	}
@@ -62,9 +72,10 @@ public class Lancamento {
 
 	public Lancamento() {}
 	
-	public Lancamento(int idLancamento, String documento, String data, float valor, TipoLancamento tipoLancamento,
+	public Lancamento(int idMei, int idLancamento, String documento, String data, float valor, TipoLancamento tipoLancamento,
 			Atividade atividade) {
 		super();
+		this.idMei = idMei;
 		this.idLancamento = idLancamento;
 		this.documento = documento;
 		this.data = data;

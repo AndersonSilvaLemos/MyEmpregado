@@ -15,7 +15,7 @@ import com.meuempregado.service.LancamentoService;
 public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
-	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo, documento, data, valor, idAtividade) VALUES (?, ?, ?, ?, ?)";
+	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo,  idAtividade, documento, data, valor, idMei) VALUES (?, ?, ?, ?, ?, ?)";
 	private String SQL_SELECT = "SELECT tl.*, ta.*, tp.idTipo, tp.descricao as descricaoTipo FROM tblancamento tl JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo;";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE IDLANCAMENTO=?;";
 	private String SQL_DELETE = "DELETE FROM  tblancamento WHERE IDLANCAMENTO=?;";
@@ -34,8 +34,10 @@ public class LancamentoDao extends GenericDao{
 			ps.setString(3, l.getDocumento());
 			ps.setString(4, l.getData());
 			ps.setFloat(5, l.getValor());
+			ps.setInt(6, l.getIdMei());
 			
 			// Executar o comando de INSERT, logo não se espera retorno
+			System.out.println(l.getValor() + l.getAtividade().getDescricao());
 			ps.executeUpdate();
 			
 			// Fechar conexão
@@ -84,7 +86,7 @@ public class LancamentoDao extends GenericDao{
 			if(rs != null){
 				while(rs.next()){
 					// Para cada registro do ResultSet, instanciar um objeto Customer
-					Lancamento c = new Lancamento(rs.getInt("idLancamento"), rs.getString("documento"),
+					Lancamento c = new Lancamento(rs.getInt("idMei"), rs.getInt("idLancamento"), rs.getString("documento"),
 							rs.getString("data"), rs.getFloat("valor"), new TipoLancamento(rs.getInt("idTipo"), rs.getString("descricaoTipo")),
 							new Atividade(rs.getInt("idAtividade"), rs.getString("descricao")));
 					
