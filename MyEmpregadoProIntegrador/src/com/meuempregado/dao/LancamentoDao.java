@@ -37,7 +37,7 @@ public class LancamentoDao extends GenericDao{
 			ps.setInt(6, l.getIdMei());
 			
 			// Executar o comando de INSERT, logo não se espera retorno
-			System.out.println(l.getValor() + l.getAtividade().getDescricao());
+			//System.out.println(l.getValor() + l.getAtividade().getDescricao());
 			ps.executeUpdate();
 			
 			// Fechar conexão
