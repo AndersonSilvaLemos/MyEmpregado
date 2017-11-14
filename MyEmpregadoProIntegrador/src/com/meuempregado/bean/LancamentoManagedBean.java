@@ -27,7 +27,7 @@ import com.meuempregado.service.LancamentoService;
 		
 		private List<Atividade> listAtividade;
 				
-		//get set
+		//get set de lancamento
 		public Lancamento getLancamento() {
 			return lancamento;
 		}
