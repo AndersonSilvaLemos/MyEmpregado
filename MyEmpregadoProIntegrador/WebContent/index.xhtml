@@ -32,21 +32,30 @@
 		<main class="container">
 		<h1>Receitas e Despesas</h1>
 		<hr/>
+
 		<f:view>
 			<h:form styleClass="form-inline">
-					<div id="actions" class="search">
-				<div class="col-md-12">
-					<br/>
-					<!--<h:outputLabel for="idLancamento" value="Pesquisar:"/> -->
-				
-					<h:inputText id="idLancamento" styleClass="form-control mb-4 mr-sm-4 mb-sm-0" value="#{lancamentoManagedBean.lancamento.idLancamento}">
-						<p:ajax event="keyup" listener="#{lancamentoManagedBean.searchByIdAction}" update="tblancamento" process="@all" />
-					</h:inputText>
-					<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{lancamentoManagedBean.searchByIdAction}"/>
-					<br/>
-					
+				<div id="actions" class="search">
+					<div class="col-md-12">
+						<br/>
+						<br/>
+						<h:selectOneMenu style="width:38%" styleClass="form-control" value="#{lancamentoManagedBean.lancamento.tipoLancamento.idTipo}">
+							<f:selectItem itemValue="0" itemLabel="Selecione Tipo"/>
+							<f:selectItem itemValue="1" itemLabel="Receita"/>
+							<f:selectItem itemValue="2" itemLabel="Despesa"/>				
+						</h:selectOneMenu>  
+						.
+						<h:selectOneMenu style="width:39%" styleClass="form-control" value="#{lancamentoManagedBean.lancamento.atividade.idAtividade}">
+							<f:selectItem itemValue="0" itemLabel="Selecione Atividade"/>
+							<f:selectItems value="#{lancamentoManagedBean.listAtividade}" 
+										var = "atividade" itemValue="#{atividade.idAtividade}" itemLabel="#{atividade.descricao}"></f:selectItems>		
+						</h:selectOneMenu>
+						.						
+						<h:commandButton styleClass="btn btn-primary" value="Pesquisar" action="#{lancamentoManagedBean.SearchLancamentoAction}"/>
+					</div>
 				</div>
-			</div>
+			<br/>
+			
 			<p:panel id="tblancamento">
 				<h:dataTable styleClass="table table-striped" var="c" value="#{lancamentoManagedBean.listLancamento}">
 					<h:column>
@@ -79,6 +88,7 @@
 						</f:facet>
 				    	<h:outputText value="#{c.atividade.descricao}"/>
 					</h:column>
+					
 					<!-- Editar -->
 					<h:column>
 						<h:commandLink styleClass="btn btn-sm btn-success" value="Editar" action="editarLancamento?faces-redirect=true">

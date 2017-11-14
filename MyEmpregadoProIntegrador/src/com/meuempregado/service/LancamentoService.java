@@ -13,6 +13,7 @@ public class LancamentoService {
 	
 
 		private LancamentoDao dao = new LancamentoDao(); 
+		
 		public List<Lancamento> listAll(){
 			
 			dao = new LancamentoDao();
@@ -40,6 +41,10 @@ public class LancamentoService {
 			return l;
 		}
 		
+		public List<Lancamento> searchLancamento(int idTipo, int idAtividade) {
+			dao = new LancamentoDao();
+			return dao.pesquisar(idTipo, idAtividade);
+		}
 
 		/*
 		public List<Lancamento> lancamentoPorId(int idLancamento) throws ClassNotFoundException, SQLException, IOException {

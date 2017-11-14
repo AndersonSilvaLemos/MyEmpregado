@@ -16,11 +16,11 @@ public class LancamentoDao extends GenericDao{
 
 	private PreparedStatement ps;
 	private String SQL_INSERT = "INSERT INTO tblancamento(idTipo,  idAtividade, documento, data, valor, idMei) VALUES (?, ?, ?, ?, ?, ?)";
-	private String SQL_SELECT = "SELECT tl.*, ta.*, tp.idTipo, tp.descricao as descricaoTipo FROM tblancamento tl JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo;";
+	private String SQL_SELECT = "SELECT tl.*, ta.*, tp.idTipo, tp.descricao as descricaoTipo FROM tblancamento tl JOIN tbatividade ta ON tl.idAtividade = ta.idAtividade JOIN tbtipolancamento tp ON tl.idTipo = tp.idTipo";
 	private String SQL_SELECT_ID = "SELECT * FROM  tblancamento WHERE IDLANCAMENTO=?;";
 	private String SQL_DELETE = "DELETE FROM  tblancamento WHERE IDLANCAMENTO=?;";
 	private String SQL_UPDATE = "UPDATE tblancamento SET idTipo=?, documento=?, data=?, valor=?, idAtividade=? WHERE IDLANCAMENTO=?";
-	
+	private String SQL_SEARCH = "SELECT * FROM tblancamento INNER JOIN tbatividade ON tblancamento.idAtividade = tbatividade.idAtividade WHERE tblancamento.idTipo = ? OR tbatividade.descricao = ? OR tblancamento.data = ?";
 	
 	public void insertLancamento(Lancamento l){
 		try {
@@ -107,6 +107,55 @@ public class LancamentoDao extends GenericDao{
 		// Se por acado não houve retorno do banco de dados, retorna
 		return lista;
 	}
+	
+	
+	public List<Lancamento> pesquisar(int idTipo, int idAtividade){
+		List<Lancamento> lista = new ArrayList<Lancamento>();
+		System.out.println("Tipo = " + idTipo + " Atividade = " + idAtividade);
+		try {
+			// Abrir conexão
+			openConnection();
+			
+			if(idTipo==0 && idAtividade==0) {
+				ps = connect.prepareStatement(SQL_SELECT);
+			}else if(idTipo!=0 && idAtividade==0) {
+				ps = connect.prepareStatement(SQL_SELECT + " WHERE tl.idTipo=" + idTipo);	
+			}else if(idTipo==0 && idAtividade!=0) {
+				ps = connect.prepareStatement(SQL_SELECT + " WHERE tl.idAtividade=" + idAtividade);	
+			}else{
+				ps = connect.prepareStatement(SQL_SELECT + " WHERE tl.idAtividade=" + idAtividade + " AND tl.idTipo=" + idTipo);	
+			}
+			
+			// Retorno da consulta com os dados no ResultSet
+			ResultSet rs = ps.executeQuery();
+			
+			// Se houve retorno
+			if(rs != null){
+				while(rs.next()){
+					// Para cada registro do ResultSet, instanciar um objeto Customer
+					Lancamento c = new Lancamento(rs.getInt("idMei"), rs.getInt("idLancamento"), rs.getString("documento"),
+							rs.getString("data"), rs.getFloat("valor"), new TipoLancamento(rs.getInt("idTipo"), rs.getString("descricaoTipo")),
+							new Atividade(rs.getInt("idAtividade"), rs.getString("descricao")));
+					
+					// Adicionar na lista de Clientes
+					lista.add(c);
+				}
+			}
+		// Fechar conexão
+			closeConnection();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not Found");
+		} catch (IOException e) {
+			System.out.println("File not Found");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Error on Connecting - listar");
+		}
+		
+		// Se por acado não houve retorno do banco de dados, retorna
+		return lista;
+	}
+	
 	
 	public Lancamento lancamentoPorId(int idLancamento) throws SQLException, ClassNotFoundException, IOException {
 		Lancamento l = null;

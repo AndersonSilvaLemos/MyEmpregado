@@ -89,6 +89,15 @@ import com.meuempregado.service.LancamentoService;
 			
 			return "index";
 		}
+		public String SearchLancamentoAction() throws ClassNotFoundException, SQLException, IOException{
+			System.out.println("Updating...");
+			
+			
+			listLancamento = service.searchLancamento(lancamento.getTipoLancamento().getIdTipo(), lancamento.getAtividade().getIdAtividade());
+			limpar();
+			
+			return "index";
+		}
 		
 		public String deleteLancamentoAction() throws ClassNotFoundException, SQLException, IOException {
 			System.out.println("Deleting...");
