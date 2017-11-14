@@ -28,6 +28,4 @@ public class Atividade {
 	public String toString() {
 		return "Atividade[idAtividade =" + idAtividade + ", descricao=" + descricao + "]";
 	}
-	
-
 }

@@ -156,7 +156,6 @@ public class LancamentoDao extends GenericDao{
 		return lista;
 	}
 	
-	
 	public Lancamento lancamentoPorId(int idLancamento) throws SQLException, ClassNotFoundException, IOException {
 		Lancamento l = null;
 		LancamentoService service = new LancamentoService();

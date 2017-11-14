@@ -14,7 +14,6 @@ import com.meuempregado.model.TipoLancamento;
 import com.meuempregado.service.AtividadeService;
 import com.meuempregado.service.LancamentoService;
 
-
 	@ManagedBean(name = "lancamentoManagedBean")
 	@SessionScoped
 	public class LancamentoManagedBean implements Serializable{
@@ -55,7 +54,6 @@ import com.meuempregado.service.LancamentoService;
 			
 			serviceAtividade = new AtividadeService();
 			listAtividade = serviceAtividade.listAll();
-
 		}
 		
 		public List<Atividade> getListAtividade() {

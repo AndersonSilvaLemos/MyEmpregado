@@ -11,7 +11,6 @@ import com.meuempregado.model.Lancamento;
 
 public class LancamentoService {
 	
-
 		private LancamentoDao dao = new LancamentoDao(); 
 		
 		public List<Lancamento> listAll(){
@@ -45,21 +44,5 @@ public class LancamentoService {
 			dao = new LancamentoDao();
 			return dao.pesquisar(idTipo, idAtividade);
 		}
-
-		/*
-		public List<Lancamento> lancamentoPorId(int idLancamento) throws ClassNotFoundException, SQLException, IOException {
-			//TO-DO
-			List<Lancamento> list = new ArrayList<Lancamento>();
-			
-			if(idLancamento != 0) {
-				list = (List<Lancamento>) dao.lancamentoPorId(idLancamento);
-			}
-			else {
-				list = dao.listarTodos();
-			}	
-			
-			return list;
-		}
-	*/
 
 }

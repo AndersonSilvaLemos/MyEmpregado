@@ -7,7 +7,6 @@ import java.util.List;
 import com.meuempregado.dao.TipoLancamentoDao;
 import com.meuempregado.model.TipoLancamento;
 
-
 public class TipoLancamentoService {
 	
 	private TipoLancamentoDao dao = new TipoLancamentoDao(); 

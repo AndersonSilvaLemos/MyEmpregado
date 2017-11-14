@@ -90,7 +90,4 @@ public class Lancamento {
 				+ valor + ", tipoLancamento =" + tipoLancamento + ", atividade=" + atividade + "]";
 	}
 
-	
-	
-
 }

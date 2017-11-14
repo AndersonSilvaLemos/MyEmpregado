@@ -45,7 +45,6 @@ public class TipoLancamentoManagedBean implements Serializable {
 		service = new TipoLancamentoService();
 		tipoLancamento = new TipoLancamento(0, "");
 		listTipoLancamento = service.listAll();
-
 	}
 	
 	public void searchByIdAction() throws ClassNotFoundException, SQLException, IOException{
@@ -66,7 +65,5 @@ public class TipoLancamentoManagedBean implements Serializable {
 		service.updateTipoLancamento(tipoLancamento);
 		
 		return "index";
-	}
-
-	
+	}	
 }

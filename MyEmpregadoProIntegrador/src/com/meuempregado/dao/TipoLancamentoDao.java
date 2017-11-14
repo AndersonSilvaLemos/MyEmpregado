@@ -17,8 +17,6 @@ public class TipoLancamentoDao extends GenericDao {
 	private String SQL_SELECT = "SELECT * FROM tbtipolancamento";
 	private String SQL_SELECT_ID = "SELECT * FROM  tbtipolancamento WHERE ID=?";
 
-
-	
 	public void insertTipoLancamento(TipoLancamento tl){
 		try {
 			// Abrir conexão
@@ -100,6 +98,4 @@ public class TipoLancamentoDao extends GenericDao {
 		
 		return tl;
 	}
-
-
 }

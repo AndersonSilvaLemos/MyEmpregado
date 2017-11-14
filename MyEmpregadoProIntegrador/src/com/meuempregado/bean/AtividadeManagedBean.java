@@ -11,8 +11,6 @@ import javax.faces.bean.SessionScoped;
 import com.meuempregado.model.Atividade;
 import com.meuempregado.service.AtividadeService;
 
-
-
 @ManagedBean(name = "atividadeManagedBean")
 @SessionScoped
 public class AtividadeManagedBean implements Serializable {
@@ -72,8 +70,4 @@ public class AtividadeManagedBean implements Serializable {
 		
 		return "index";
 	}
-
-	
-	
-
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import com.meuempregado.dao.AtividadeDao;
 import com.meuempregado.model.Atividade;
 
-
 public class AtividadeService {
 	
 	private AtividadeDao dao = new AtividadeDao(); 
@@ -25,7 +24,6 @@ public class AtividadeService {
 
 	public void updateAtividade(Atividade atividade) {
 		// TODO Auto-generated method stub
-		
 		
 	}
 	
